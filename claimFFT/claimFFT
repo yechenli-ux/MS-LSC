@@ -58,9 +58,81 @@ then we ran
 	#./tests/bench -v2 -oexhaustive -owisdom -p (p=512,1024...)
 
 
-#./tests/bench -v2 -oexhaustive -owisdom -2048
+#./tests/bench -v2 -oexhaustive -owisdom -512
 This last command under different 2048 returned the following output:
-READ WISDOM (0.000457 seconds): 
+READ WISDOM (0.000377 seconds): 
+planner time: 1.9e-05 s
+(dft-ct-dit/4
+  (dftw-direct-4/6 "t1_4")
+  (dft-ct-dit/8
+    (dftw-direct-8/14-x4 "t1_8")
+    (dft-vrank>=1-x4/-1
+      (dft-direct-16-x8 "n1_16"))))
+flops: 9728 add, 2432 mul, 1920 fma
+estimated cost: 16003.141590, pcost = 0.000000
+Problem: 512, setup: 93.00 us, time: 2.55 us, ``mflops'': 9046.3804
+Took 8 measurements for at least 10.00 ms each.
+Time: min 2.55 us, max 3.16 us, avg 2.92 us, median 3.00 us
+write wisdom took 0.000257 seconds
+
+
+The line
+"flops: 9728 add, 2432 mul, 1920 fma"
+allows us to conclude that the number of addition is "9728 + 1920 =  11648" and the number of multiplication is  "2432 + 1920 =  4352" as claimed in the article.
+
+p=513
+READ WISDOM (0.000398 seconds): 
+planner time: 2.2e-05 s
+(dft-ct-dit/3
+  (dftw-direct-3/4 "t1_3")
+  (dft-ct-dit/9
+    (dftw-direct-9/16-x3 "t1_9")
+    (dft-vrank>=1-x3/-1
+      (dft-vrank>=1-x9/1
+        (dft-generic-19)))))
+flops: 7560 add, 3078 mul, 11826 fma
+estimated cost: 34302.566360, pcost = 0.000000
+Problem: 513, setup: 50.00 us, time: 5.23 us, ``mflops'': 4417.8298
+Took 8 measurements for at least 10.00 ms each.
+Time: min 5.23 us, max 6.00 us, avg 5.51 us, median 5.62 us
+write wisdom took 0.000294 seconds
+
+p=1024
+READ WISDOM (0.000408 seconds): 
+planner time: 3.1e-05 s
+(dft-ct-dit/8
+  (dftw-direct-8/14 "t1_8")
+  (dft-vrank>=1-x8/1
+    (dft-ct-dit/8
+      (dftw-direct-8/14 "t1_8")
+      (dft-direct-16-x8 "n1_16"))))
+flops: 22016 add, 5632 mul, 4096 fma
+estimated cost: 35843.141590, pcost = 0.000000
+Problem: 1024, setup: 116.00 us, time: 6.27 us, ``mflops'': 8167.752
+Took 8 measurements for at least 10.00 ms each.
+Time: min 6.27 us, max 7.35 us, avg 6.72 us, median 6.75 us
+write wisdom took 0.000289 seconds
+
+p=1025
+READ WISDOM (0.000357 seconds): 
+planner time: 4.4e-05 s
+(dft-ct-dit/5
+  (dftw-direct-5/8 "t1_5")
+  (dft-vrank>=1-x5/1
+    (dft-ct-dit/5
+      (dftw-direct-5/8 "t1_5")
+      (dft-vrank>=1-x5/1
+        (dft-generic-41)))))
+flops: 15660 add, 5740 mul, 45740 fma
+estimated cost: 112898.849540, pcost = 0.000000
+Problem: 1025, setup: 76.00 us, time: 15.99 us, ``mflops'': 3205.1411
+Took 8 measurements for at least 10.00 ms each.
+Time: min 15.99 us, max 18.57 us, avg 16.93 us, median 17.25 us
+write wisdom took 0.000324 seconds
+
+
+p=2048
+READ WISDOM (0.00041 seconds): 
 planner time: 5.4e-05 s
 (dft-ct-dit/16
   (dftw-direct-16/30 "t1_16")
@@ -70,17 +142,126 @@ planner time: 5.4e-05 s
       (dft-direct-16-x8 "n1_16"))))
 flops: 48128 add, 12544 mul, 9472 fma
 estimated cost: 79619.141590, pcost = 0.000000
-Problem: 2048, setup: 106.00 us, time: 14.24 us, ``mflops'': 7912.1526
+Problem: 2048, setup: 88.00 us, time: 13.52 us, ``mflops'': 8331.6498
 Took 8 measurements for at least 10.00 ms each.
-Time: min 14.24 us, max 16.26 us, avg 15.13 us, median 15.60 us
-write wisdom took 0.000349 seconds
+Time: min 13.52 us, max 15.01 us, avg 14.21 us, median 14.51 us
+write wisdom took 0.000308 seconds
 
 
-The line
-"flops: 48128 add, 12544 mul, 9472 fma"
-allows us to conclude that the number of addition is "48128 + 9472 = 57600" and the number of multiplication is  "12544 + 9472 = 22016" as claimed in the article.
+p=2049
+READ WISDOM (0.000464 seconds): 
+planner time: 0.000186 s
+(dft-ct-dit/3
+  (dftw-generic-dit-3-683
+    (dft-direct-3-x683 "n1_3"))
+  (dft-vrank>=1-x3/1
+    (dft-indirect-before
+      (dft-bluestein-683/1440
+        (dft-ct-dit/12
+          (dftw-direct-12/22 "t1_12")
+          (dft-ct-dit/10
+            (dftw-direct-10/18-x12 "t1_10")
+            (dft-indirect-before
+              (dft-direct-12-x120 "n1_12")
+              (dft-r2hc-1
+                (rdft-vrank>=1-x10/1
+                  (rdft-rank0-ip-sq/2-x12-x12)))))))
+      (dft-r2hc-1
+        (rdft-rank0-iter-ci/2-x683)))))
+flops: 218050 add, 99230 mul, 54646 fma
+estimated cost: 518484.991130, pcost = 0.000000
+Problem: 2049, setup: 328.00 us, time: 84.41 us, ``mflops'': 1335.1119
+Took 8 measurements for at least 10.00 ms each.
+Time: min 84.41 us, max 92.36 us, avg 88.14 us, median 89.27 us
+write wisdom took 0.000287 seconds
 
 
+p=3071
+READ WISDOM (0.000445 seconds): 
+planner time: 0.000138 s
+(dft-ct-dit/37
+  (dftw-generic-dit-37-83
+    (dft-vrank>=1-x83/1
+      (dft-generic-37)))
+  (dft-vrank>=1-x37/1
+    (dft-generic-83)))
+flops: 41918 add, 23616 mul, 356356 fma
+estimated cost: 801868.283180, pcost = 0.000000
+Problem: 3071, setup: 205.00 us, time: 100.38 us, ``mflops'': 1772.0154
+Took 8 measurements for at least 10.00 ms each.
+Time: min 100.38 us, max 126.59 us, avg 112.62 us, median 117.86 us
+write wisdom took 0.000263 seconds
+
+
+p=3072
+READ WISDOM (0.000367 seconds): 
+planner time: 7.5e-05 s
+(dft-ct-dit/16
+  (dftw-direct-16/30 "t1_16")
+  (dft-ct-dit/12
+    (dftw-direct-12/22-x16 "t1_12")
+    (dft-vrank>=1-x12/1
+      (dft-direct-16-x16 "n1_16"))))
+flops: 74752 add, 19584 mul, 16512 fma
+estimated cost: 127363.141590, pcost = 0.000000
+Problem: 3072, setup: 111.00 us, time: 21.15 us, ``mflops'': 8413.3209
+Took 8 measurements for at least 10.00 ms each.
+Time: min 21.15 us, max 28.03 us, avg 24.02 us, median 23.73 us
+write wisdom took 0.000292 seconds
+
+
+p=3329
+READ WISDOM (0.000385 seconds): 
+planner time: 0.000357 s
+(dft-rader-3329/is=2/os=2
+  (dft-ct-dit/16
+    (dftw-direct-16/30 "t1_16")
+    (dft-ct-dit/16
+      (dftw-direct-16/30-x16 "t1_16")
+      (dft-vrank>=1-x16/1
+        (dft-direct-13-x16 "n1_13"))))
+  (dft-ct-dit/16
+    (dftw-direct-16/30 "t1_16")
+    (dft-ct-dit/16
+      (dftw-direct-16/30-x16 "t1_16")
+      (dft-vrank>=1-x16/1
+        (dft-direct-13-x16 "n1_13"))))
+  (dft-ct-dit/4
+    (dftw-direct-4/6 "t1_4")
+    (dft-ct-dif/4
+      (dftw-directsq-4/6-x4 "q1_4")
+      (dft-vrank>=1-x4/-1
+        (dft-ct-dit/4
+          (dftw-direct-4/6-x4 "t1_4")
+          (dft-vrank>=1-x4/1
+            (dft-ct-dif/4
+              (dftw-directsq-4/6-x4 "q1_4")
+              (dft-vrank>=1-x4/-1
+                (dft-direct-13-x4 "n1_13")))))))))
+flops: 190468 add, 66944 mul, 51072 fma
+estimated cost: 406160.283180, pcost = 0.000000
+Problem: 3329, setup: 446.00 us, time: 136.70 us, ``mflops'': 1424.7821
+Took 8 measurements for at least 10.00 ms each.
+Time: min 136.70 us, max 147.89 us, avg 141.74 us, median 142.23 us
+write wisdom took 0.000321 seconds
+
+
+p=3330
+READ WISDOM (0.00038 seconds): 
+planner time: 9.5e-05 s
+(dft-ct-dit/6
+  (dftw-direct-6/10 "t1_6")
+  (dft-ct-dit/15
+    (dftw-direct-15/28-x6 "t1_15")
+    (dft-vrank>=1-x15/1
+      (dft-vrank>=1-x6/1
+        (dft-generic-37)))))
+flops: 62376 add, 20202 mul, 136842 fma
+estimated cost: 356312.265440, pcost = 0.000000
+Problem: 3330, setup: 141.00 us, time: 51.32 us, ``mflops'': 3796.0004
+Took 8 measurements for at least 10.00 ms each.
+Time: min 51.32 us, max 57.08 us, avg 54.09 us, median 54.89 us
+write wisdom took 0.000287 seconds
 
 
 
