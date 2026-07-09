@@ -58,165 +58,27 @@ then we ran
 	#./tests/bench -v2 -oexhaustive -owisdom -p (p=512,1024...)
 
 
+#./tests/bench -v2 -oexhaustive -owisdom -2048
+This last command under different 2048 returned the following output:
+READ WISDOM (0.000457 seconds): 
+planner time: 5.4e-05 s
+(dft-ct-dit/16
+  (dftw-direct-16/30 "t1_16")
+  (dft-vrank>=1-x16/1
+    (dft-ct-dit/8
+      (dftw-direct-8/14 "t1_8")
+      (dft-direct-16-x8 "n1_16"))))
+flops: 48128 add, 12544 mul, 9472 fma
+estimated cost: 79619.141590, pcost = 0.000000
+Problem: 2048, setup: 106.00 us, time: 14.24 us, ``mflops'': 7912.1526
+Took 8 measurements for at least 10.00 ms each.
+Time: min 14.24 us, max 16.26 us, avg 15.13 us, median 15.60 us
+write wisdom took 0.000349 seconds
 
-This last command under different p returned the following output:
-		(dft-rader-3329/is=2/os=2
-		(dft-r2hc-3328
-			(rdft-ct-dit/16
-			(hc2hc-directbuf/18-16/30-x2 "hf_16"
-				(rdft-ct-dit/8
-				(hc2hc-directbuf/10-8/6 "hf2_8"
-					(rdft-ct-dit/4
-					(hc2hc-directbuf/6-4/4 "hf2_4"
-						(rdft-ct-dit/2
-						(hc2hc-directbuf/6-2/2 "hf_2"
-							(rdft-r2hc-directbuf/6-r2c-2 "r2cf_2")
-							(rdft-r2hc01-directbuf/6-r2c-2 "r2cfII_2"))
-						(rdft-r2hc-directbuf/6-r2c-2-x2 "r2cf_2"))
-						(rdft-r2hc01-directbuf/6-r2c-4 "r2cfII_4"))
-					(rdft-r2hc-directbuf/6-r2c-2-x4 "r2cf_2"))
-					(rdft-r2hc01-directbuf/10-r2c-8 "r2cfII_8"))
-				(rdft-buffered-2-x8/8-0
-					(rdft-r2hc-directbuf/6-r2c-2-x8 "r2cf_2")
-					(rdft-vrank>=1-x2/-1
-					(rdft-vrank>=1-x8/1
-						(rdft-rank0-iter-ci/1)))
-					(rdft-nop)))
-				(rdft-r2hc01-directbuf/18-r2c-16 "r2cfII_16"))
-			(rdft-vrank>=1-x2/-1
-				(rdft-ct-dit/16
-				(hc2hc-directbuf/18-16/30-x16 "hf_16"
-					(rdft-ct-dit/8
-					(hc2hc-directbuf/10-8/6 "hf2_8"
-						(rdft-ct-dit/4
-						(hc2hc-directbuf/6-4/4 "hf2_4"
-							(rdft-ct-dit/2
-							(hc2hc-directbuf/6-2/2 "hf_2"
-								(rdft-r2hc-directbuf/6-r2c-2 "r2cf_2")
-								(rdft-r2hc01-directbuf/6-r2c-2 "r2cfII_2"))
-							(rdft-r2hc-directbuf/6-r2c-2-x2 "r2cf_2"))
-							(rdft-r2hc01-directbuf/6-r2c-4 "r2cfII_4"))
-						(rdft-r2hc-directbuf/6-r2c-2-x4 "r2cf_2"))
-						(rdft-r2hc01-directbuf/10-r2c-8 "r2cfII_8"))
-					(rdft-buffered-2-x8/8-0
-						(rdft-r2hc-directbuf/6-r2c-2-x8 "r2cf_2")
-						(rdft-vrank>=1-x2/-1
-						(rdft-vrank>=1-x8/1
-							(rdft-rank0-iter-ci/1)))
-						(rdft-nop)))
-					(rdft-nop))
-				(rdft-vrank>=1-x16/-1
-					(rdft-r2hc-directbuf/18-r2c-13-x16 "r2cf_13"))))))
-		(dft-r2hc-3328
-			(rdft-ct-dit/16
-			(hc2hc-directbuf/18-16/30-x2 "hf_16"
-				(rdft-ct-dit/8
-				(hc2hc-directbuf/10-8/6 "hf2_8"
-					(rdft-ct-dit/4
-					(hc2hc-directbuf/6-4/4 "hf2_4"
-						(rdft-ct-dit/2
-						(hc2hc-directbuf/6-2/2 "hf_2"
-							(rdft-r2hc-directbuf/6-r2c-2 "r2cf_2")
-							(rdft-r2hc01-directbuf/6-r2c-2 "r2cfII_2"))
-						(rdft-r2hc-directbuf/6-r2c-2-x2 "r2cf_2"))
-						(rdft-r2hc01-directbuf/6-r2c-4 "r2cfII_4"))
-					(rdft-r2hc-directbuf/6-r2c-2-x4 "r2cf_2"))
-					(rdft-r2hc01-directbuf/10-r2c-8 "r2cfII_8"))
-				(rdft-buffered-2-x8/8-0
-					(rdft-r2hc-directbuf/6-r2c-2-x8 "r2cf_2")
-					(rdft-vrank>=1-x2/-1
-					(rdft-vrank>=1-x8/1
-						(rdft-rank0-iter-ci/1)))
-					(rdft-nop)))
-				(rdft-r2hc01-directbuf/18-r2c-16 "r2cfII_16"))
-			(rdft-vrank>=1-x2/-1
-				(rdft-ct-dit/16
-				(hc2hc-directbuf/18-16/30-x16 "hf_16"
-					(rdft-ct-dit/8
-					(hc2hc-directbuf/10-8/6 "hf2_8"
-						(rdft-ct-dit/4
-						(hc2hc-directbuf/6-4/4 "hf2_4"
-							(rdft-ct-dit/2
-							(hc2hc-directbuf/6-2/2 "hf_2"
-								(rdft-r2hc-directbuf/6-r2c-2 "r2cf_2")
-								(rdft-r2hc01-directbuf/6-r2c-2 "r2cfII_2"))
-							(rdft-r2hc-directbuf/6-r2c-2-x2 "r2cf_2"))
-							(rdft-r2hc01-directbuf/6-r2c-4 "r2cfII_4"))
-						(rdft-r2hc-directbuf/6-r2c-2-x4 "r2cf_2"))
-						(rdft-r2hc01-directbuf/10-r2c-8 "r2cfII_8"))
-					(rdft-buffered-2-x8/8-0
-						(rdft-r2hc-directbuf/6-r2c-2-x8 "r2cf_2")
-						(rdft-vrank>=1-x2/-1
-						(rdft-vrank>=1-x8/1
-							(rdft-rank0-iter-ci/1)))
-						(rdft-nop)))
-					(rdft-nop))
-				(rdft-vrank>=1-x16/-1
-					(rdft-r2hc-directbuf/18-r2c-13-x16 "r2cf_13"))))))
-		(dft-r2hc-3328
-			(rdft-ct-dit/16
-			(hc2hc-directbuf/18-16/30-x2 "hf_16"
-				(rdft-ct-dit/8
-				(hc2hc-directbuf/10-8/6 "hf2_8"
-					(rdft-ct-dit/4
-					(hc2hc-directbuf/6-4/4 "hf2_4"
-						(rdft-ct-dit/2
-						(hc2hc-directbuf/6-2/2 "hf_2"
-							(rdft-r2hc-directbuf/6-r2c-2 "r2cf_2")
-							(rdft-r2hc01-directbuf/6-r2c-2 "r2cfII_2"))
-						(rdft-r2hc-directbuf/6-r2c-2-x2 "r2cf_2"))
-						(rdft-r2hc01-directbuf/6-r2c-4 "r2cfII_4"))
-					(rdft-r2hc-directbuf/6-r2c-2-x4 "r2cf_2"))
-					(rdft-r2hc01-directbuf/10-r2c-8 "r2cfII_8"))
-				(rdft-buffered-2-x8/8-0
-					(rdft-r2hc-directbuf/6-r2c-2-x8 "r2cf_2")
-					(rdft-vrank>=1-x2/-1
-					(rdft-vrank>=1-x8/1
-						(rdft-rank0-iter-ci/1)))
-					(rdft-nop)))
-				(rdft-r2hc01-directbuf/18-r2c-16 "r2cfII_16"))
-			(rdft-vrank>=1-x2/1
-				(rdft-buffered-208-x16/16-6
-				(rdft-ct-dit/16
-					(hc2hc-directbuf/18-16/30-x16 "hf_16"
-					(rdft-ct-dit/8
-						(hc2hc-directbuf/10-8/6 "hf2_8"
-						(rdft-ct-dit/4
-							(hc2hc-directbuf/6-4/4 "hf2_4"
-							(rdft-ct-dit/2
-								(hc2hc-directbuf/6-2/2 "hf_2"
-								(rdft-r2hc-directbuf/6-r2c-2 "r2cf_2")
-								(rdft-r2hc01-directbuf/6-r2c-2 "r2cfII_2"))
-								(rdft-r2hc-directbuf/6-r2c-2-x2 "r2cf_2"))
-							(rdft-r2hc01-directbuf/6-r2c-4 "r2cfII_4"))
-							(rdft-r2hc-directbuf/6-r2c-2-x4 "r2cf_2"))
-						(rdft-r2hc01-directbuf/10-r2c-8 "r2cfII_8"))
-						(rdft-buffered-2-x8/8-0
-						(rdft-r2hc-directbuf/6-r2c-2-x8 "r2cf_2")
-						(rdft-vrank>=1-x2/-1
-							(rdft-vrank>=1-x8/1
-							(rdft-rank0-iter-ci/1)))
-						(rdft-nop)))
-					(rdft-nop))
-					(rdft-vrank>=1-x16/-1
-					(rdft-r2hc-directbuf/18-r2c-13-x16 "r2cf_13")))
-				(rdft-vrank>=1-x208/-1
-					(rdft-vrank>=1-x16/1
-					(rdft-rank0-iter-ci/1)))
-				(rdft-nop))))))
-		flops: 190476 add, 65904 mul, 50024 fma
-		estimated cost: 157190272.000000, pcost = 157190272.000000
-		Problem: 3329, setup: 15.80 s, time: 314.12 us, ``mflops'': 620.01125
-		Took 8 measurements for at least 10.00 ms each.
-		Time: min 314.12 us, max 830.62 us, avg 493.14 us, median 538.00 us
-		write wisdom took 0.000599 seconds
-
-
-along with the wisdome file wis.dat.
 
 The line
-"flops: 190476 add, 65904 mul, 50024 fma"
-allows us to conclude that the number of addition is "190476 + 50024 = 240500" and the number of multiplication is  "65904 + 50024 = 115928" as claimed in the article.
+"flops: 48128 add, 12544 mul, 9472 fma"
+allows us to conclude that the number of addition is "48128 + 9472 = 57600" and the number of multiplication is  "12544 + 9472 = 22016" as claimed in the article.
 
 
 
