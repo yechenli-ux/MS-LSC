@@ -60,3 +60,6 @@ sage-python read.py
 
 ## License
 This project is a derivative work based on the [CodedDualAttack](https://github.com/kevin-carrier/CodedDualAttack) repository by Kevin Carrier. Please refer to the original repository for licensing terms.
+## Acknowledgments
+-Original author: Kevin Carrier
+-Original repository: CodedDualAttack
