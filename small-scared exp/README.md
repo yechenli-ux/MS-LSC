@@ -38,7 +38,7 @@ Adjust the paths (`-i`, `-o`) and the beta value (`-b`) as needed.
 
 ### 3. Sieving with g6k
 
-Once the reduced basis is obtained, run the progressive sieve provided by g6k. The script `sieve.py` (inside the g6k directory) reads the BKZ‑output basis and produces the final sieve statistics.
+Once the reduced basis is obtained, run the progressive sieve provided by g6k. The script `sieve.py` (put it inside the g6k directory) reads the BKZ‑output basis and produces the final sieve statistics.
 
 ```bash
 cd /path/to/g6k
