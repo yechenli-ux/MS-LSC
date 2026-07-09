@@ -62,7 +62,7 @@ sage-python Algorithm1_ms.py
 sage-python Algorithm1_lsc_ms.py
 ```
 
-You can modify internal parameters (e.g., dimension range, number of trials, sieve parameters) directly in each file.
+You can modify internal parameters (e.g., dimension of sample, number of short vectors) directly in each file.
 
 ## Important Notes
 
