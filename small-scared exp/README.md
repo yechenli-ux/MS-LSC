@@ -42,7 +42,7 @@ Once the reduced basis is obtained, run the progressive sieve provided by g6k. T
 
 ```bash
 cd /path/to/g6k
-./sieve.py
+python sieve.py
 ```
 
 > **Note**: Some parts of the sieving code were taken from Ludo Pulles’ work in  
