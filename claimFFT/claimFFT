@@ -1,5 +1,7 @@
-The complexity claims (Proposition 2.12) for the FFT in Z_3329 was obtained with FFTW.
+This modification to X(iestimate_cost) is adapted from
+https://github.com/kevin-carrier/CodedDualAttack/tree/main/claimFFT(Original author: Kevin Carrier)
 
+The complexity claims  for the FFT in Z_p was obtained with FFTW.
 More precisly we slightly modified FFTW 3.3.10 (http://www.fftw.org/fftw-3.3.10.tar.gz):
 In the file kernel/planner.c: we replaced the "X(iestimate_cost)" function by
 	double X(iestimate_cost)(const planner *ego, const plan *pln, const problem *p)
@@ -53,9 +55,11 @@ In the file kernel/planner.c: we replaced the "evaluate_plan" function by
 then we ran 
 	#./configure
 	#make
-	#./tests/bench -v2 -oexhaustive -owisdom 3329
+	#./tests/bench -v2 -oexhaustive -owisdom -p (p=512,1024...)
 
-This last command returned the following output:
+
+
+This last command under different p returned the following output:
 		(dft-rader-3329/is=2/os=2
 		(dft-r2hc-3328
 			(rdft-ct-dit/16
