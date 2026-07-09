@@ -79,6 +79,8 @@ write wisdom took 0.000257 seconds
 The line
 "flops: 9728 add, 2432 mul, 1920 fma"
 allows us to conclude that the number of addition is "9728 + 1920 =  11648" and the number of multiplication is  "2432 + 1920 =  4352" as claimed in the article.
+The command-line outputs for the other values of p are as follows.
+
 
 p=513
 READ WISDOM (0.000398 seconds): 
