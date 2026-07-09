@@ -21,7 +21,7 @@ Make sure both are compiled and available on your system. All paths in the scrip
 Run `build_dual.py` to create lattice bases of different dimensions.
 
 ```bash
-sage-python build_dual.py
+python build_dual.py
 ```
 
 You can modify the parameters (dimensions, number of samples, etc.) directly inside the script.
@@ -58,8 +58,8 @@ Two experimental scripts are provided to test the **MS‑LSC** and **LSC‑MS** 
 Run them sequentially:
 
 ```bash
-sage-python Algorithm1_ms.py
-sage-python Algorithm1_lsc_ms.py
+python Algorithm1_ms.py
+python Algorithm1_lsc_ms.py
 ```
 
 You can modify internal parameters (e.g., dimension of sample, number of short vectors) directly in each file.
@@ -68,7 +68,6 @@ You can modify internal parameters (e.g., dimension of sample, number of short v
 
 - **File Paths:** All input/output file paths are hard-coded in the scripts. You **must** change them to match your actual folder structure before running anything.
 - **Dependencies:** Both BLASter and g6k must be installed and their executables/scripts accessible from the command line. The example commands assume you are in the root directory of each tool.
-- **SageMath:** The Python scripts are written for SageMath’s Python interpreter. Use `sage-python` (or `sage --python`) to run them.
 
 ## Acknowledgments
 
